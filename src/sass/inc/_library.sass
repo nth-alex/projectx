@@ -1,0 +1,55 @@
+// ==== LIBRARY ==== //
+=media($min-query: null, $max-query: null)
+  @if $min-query == null and $max-query == null
+    @warn 'Mixin k-media() received two null values; no output'
+    @content
+
+  @else if $max-query == null
+    @media screen and (min-width: $min-query+0px)
+      @content
+
+  @else if $min-query == null
+    @media screen and (max-width: $max-query+0px)
+      @content
+
+  @else
+    @media screen and (min-width: $min-query+0px) and (max-width: $max-query+0px)
+      @content
+
+=min($min-query)
+  +media($min-query, null)
+    @content
+
+=max($max-query)
+  +media(null, $max-query - 1)
+    @content
+
+=media-between($min-query: null, $max-query: null)
+  @if $min-query == null or $max-query == null
+    @warn "Mixin media-between() received a null value."
+  +media($min-query, $max-query - 1)
+    @content
+
+=arrow($dir, $w, $size, $color)
+  border-width: 0
+  border-style: solid
+  border-color: $color
+  width: $size+0px
+  height: $size+0px
+
+  @if $dir == up
+    border-top-width: $w+0px
+    border-right-width: $w+0px
+    transform: rotate(-45deg)
+  @if $dir == right
+    border-top-width: $w+0px
+    border-right-width: $w+0px
+    transform: rotate(45deg)
+  @if $dir == down
+    border-bottom-width: $w+0px
+    border-right-width: $w+0px
+    transform: rotate(45deg)
+  @if $dir == left
+    border-bottom-width: $w+0px
+    border-left-width: $w+0px
+    transform: rotate(45deg)

@@ -1,0 +1,17 @@
+@import "inc/library"
+@import "inc/general"
+
+.dflex
+  display: flex
+
+  +min(960)
+    display: none
+
+  div
+    &:nth-child(1)
+      background: red
+
+
+.hello
+  +min(960)
+    display: inline-block

@@ -1,0 +1,2 @@
+body{margin:0}.dflex{display:-webkit-box;display:-ms-flexbox;display:flex}.dflex div:first-child{background:red}@media screen and (min-width:960px){.dflex{display:none}.hello{display:inline-block}}
+/*# sourceMappingURL=main.css.map */
