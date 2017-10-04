@@ -22,6 +22,7 @@ var del = require('del');
 var favicons = require("gulp-favicons");
 var newer = require('gulp-newer');
 var svgSprite = require('gulp-svg-sprite');
+var fileinclude = require('gulp-file-include');
 
 gulp.task('clean', function () {
   return del(['*.html','img','css','js']);
@@ -45,12 +46,22 @@ gulp.task('favicon', function () {
     .pipe(gulp.dest('./img/favicons'));
 });
 
+gulp.task('html', function () {
+  return gulp.src('src/html/*.html')
+    .pipe(plumber({
+      errorHandler: notify.onError("Error: <%= error.message %>")
+    }))
+    .pipe(fileinclude({
+      prefix: '@'
+    }))
+    .pipe(gulp.dest('./'))
+});
+
 // Basic configuration example
 var config = {
   mode: {
-    css: {
+    symbol: {
       sprite: '../img/sprite.svg',
-      dimensions: true,
       render: {
         scss: {
           dest: '../src/sass/inc/_sprite.scss',
@@ -62,6 +73,13 @@ var config = {
 
 gulp.task('svg', function () {
   gulp.src('src/img/sprite/**/*.svg')
+    .pipe(imagemin([
+      imagemin.svgo({
+        plugins: [
+          {removeAttrs: {attrs: 'fill'}}
+        ]
+      })
+    ]))
   	.pipe(svgSprite(config))
   	.pipe(gulp.dest('./'));
 });
@@ -93,12 +111,6 @@ gulp.task('js:watch', function () {
   }
 
   return bundle();
-});
-
-gulp.task('html', function () {
-  return gulp.src('./src/**/*.html')
-    .pipe(newer('./'))
-    .pipe(gulp.dest('./'));
 });
 
 gulp.task('img', function () {
@@ -133,13 +145,14 @@ gulp.task('sass', function() {
 gulp.task('dev', ['build', 'js:watch'], function() {
   browserSync.init({
     server: './',
-    files: ['./img**/*(*.png|*.jpg|*.jpeg|*.gif|*.ico|*.svg)', './*.html'],
+    files: ['./img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.ico|*.svg)', './*.html'],
     open: false,
     notify: false
   });
 
   gulp.watch('src/sass/**/*.{sass,scss}', ['sass']);
-  gulp.watch('src/**/*.html', ['html']);
+  gulp.watch('src/html/**/*.html', ['html']);
+  gulp.watch('src/img/sprite/**/*.svg', ['svg']);
   gulp.watch(['src/img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)', '!src/img/sprite', '!src/img/sprite/**'], ['img']);
 });
 
