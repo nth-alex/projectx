@@ -1,0 +1,63 @@
+html
+  background: #fff
+  line-height: 1.4
+
+.svgicon
+  display: inline-block
+
+*
+  outline: none
+  -webkit-tap-highlight-color: transparent
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+input[placeholder]
+  text-overflow: ellipsis
+input::-moz-placeholder
+  text-overflow: ellipsis
+input:-moz-placeholder
+  text-overflow: ellipsis
+input:-ms-input-placeholder
+  text-overflow: ellipsis
+
+p
+  margin: 0 0 1em
+  color: $p_color
+
++scut-reset(semanticize paragraph)
+
+ul
+  padding: 0
+  margin: 0
+  list-style: none
+
+article
+  ul
+    margin: 20px 0 20px 20px
+
+    > li
+      position: relative
+      padding-left: 15px
+      color: $p_color
+
+      &:before
+        content: ""
+        position: absolute
+        width: 6px
+        height: 6px
+        left: 0
+        top: calc(50% - 3px)
+        background: $p_color
+
+em
+  font-style: italic
+
+a
+  border: 0
+  color: $link_color
+  text-decoration: none
+  transition: color .25s
+
+  &:hover,
+  &:focus
+    color: $link_color_hover

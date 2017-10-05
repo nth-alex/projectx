@@ -24,6 +24,9 @@ var newer = require('gulp-newer');
 var svgSprite = require('gulp-svg-sprite');
 var fileinclude = require('gulp-file-include');
 
+var npm = './node_modules/';
+var bower = './bower_components/';
+
 gulp.task('clean', function () {
   return del(['*.html','img','css','js']);
 });
@@ -135,7 +138,12 @@ gulp.task('sass', function() {
       errorHandler: notify.onError("Error: <%= error.message %>")
     }))
     .pipe(sourcemaps.init())
-    .pipe(sass())
+    .pipe(sass({
+      includePaths: [
+        npm,
+        bower
+      ]
+    }))
     .pipe(postcss(postCssPlugins))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./css'))

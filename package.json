@@ -30,6 +30,8 @@
     "gulp-svg-sprite": "^1.3.7",
     "imagemin-mozjpeg": "^6.0.0",
     "jquery": "^3.2.1",
+    "normalize.sass": "^3.0.3-2",
+    "scut": "^1.4.0",
     "svg4everybody": "^2.1.9",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0"
