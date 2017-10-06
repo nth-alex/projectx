@@ -60,6 +60,11 @@ gulp.task('html', function () {
     .pipe(gulp.dest('./'))
 });
 
+gulp.task('fonts', function () {
+  return gulp.src('src/fonts/**/*(*.eot|*.ttf|*.woff|*.woff2)')
+    .pipe(gulp.dest('./fonts'));
+});
+
 // Basic configuration example
 var config = {
   mode: {
@@ -164,5 +169,5 @@ gulp.task('dev', ['build', 'js:watch'], function() {
   gulp.watch(['src/img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)', '!src/img/sprite', '!src/img/sprite/**'], ['img']);
 });
 
-gulp.task('build', ['sass', 'html', 'img', 'svg', 'favicon', 'js:build']);
+gulp.task('build', ['sass', 'html', 'fonts', 'img', 'svg', 'favicon', 'js:build']);
 gulp.task('default', ['dev']);
