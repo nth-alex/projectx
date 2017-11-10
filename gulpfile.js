@@ -140,7 +140,9 @@ gulp.task('img', function () {
 gulp.task('sass', function() {
   var postCssPlugins = [
     autoprefixer(),
-    cssnano(),
+    cssnano({
+      zindex: false
+    }),
     mqpacker()
   ]
   return gulp.src('./src/sass/**/*.{sass, scss}')
