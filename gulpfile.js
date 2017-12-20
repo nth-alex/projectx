@@ -165,7 +165,7 @@ gulp.task('sass', function() {
 gulp.task('dev', ['build', 'js:watch'], function() {
   browserSync.init({
     server: './',
-    files: ['./img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.ico|*.svg)', './*.html'],
+    files: ['./img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.ico|*.svg)'],
     open: false,
     notify: false
   });
