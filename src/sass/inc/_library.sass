@@ -68,3 +68,20 @@
 =center
   margin-left: auto
   margin-right: auto
+
+/*--------------------------------------------------------------
+ # WRAP
+ --------------------------------------------------------------*/
+=wrap($width: 1200)
+  max-width: $width+0px
+  margin-left: auto
+  margin-right: auto
+  padding-left: 15px
+  padding-right: 15px
+  
+/*--------------------------------------------------------------
+ # PX TO EM
+ --------------------------------------------------------------*/
+$browser-context: 16
+@function em($pixels, $context: $browser-context)
+  @return #{$pixels/$context}em

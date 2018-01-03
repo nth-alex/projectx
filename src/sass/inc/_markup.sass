@@ -4,9 +4,13 @@ html
 body
   background: #fff
   font-family: 'Raleway', sans-serif
+  font-size: 1rem
 
 .svgicon
   display: inline-block
+
+svg
+  fill: currentColor
 
 *
   outline: none
@@ -22,6 +26,17 @@ input:-moz-placeholder
   text-overflow: ellipsis
 input:-ms-input-placeholder
   text-overflow: ellipsis
+
+input,
+textarea
+
+  &::-webkit-input-placeholder
+    transition: all .3s
+    opacity: 1
+
+  &:focus::-webkit-input-placeholder
+    transform: translateX(-10px)
+    opacity: 0
 
 p
   margin: 0 0 1em
@@ -64,3 +79,14 @@ a
   &:hover,
   &:focus
     color: $link_color_hover
+
+%cf
+
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+
+.hidden
+  display: none
