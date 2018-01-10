@@ -28,7 +28,7 @@ var npm = './node_modules/';
 var bower = './bower_components/';
 
 gulp.task('clean', function () {
-  return del(['*.html','img','css','js']);
+  return del(['*.html','img','css','js','fonts']);
 });
 
 gulp.task('favicon', function () {
