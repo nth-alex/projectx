@@ -158,7 +158,7 @@ gulp.task('sass', function() {
     }))
     .pipe(postcss(postCssPlugins))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./css'))
+    .pipe(gulp.dest('./'))
     .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
