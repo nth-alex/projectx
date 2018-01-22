@@ -23,9 +23,15 @@ var favicons = require("gulp-favicons");
 var newer = require('gulp-newer');
 var svgSprite = require('gulp-svg-sprite');
 var fileinclude = require('gulp-file-include');
+var beep = require('beepbeep');
 
 var npm = './node_modules/';
 var bower = './bower_components/';
+
+function error_handler (error) {
+  beep();
+  return "ERROR: " + error.message;
+}
 
 gulp.task('clean', function () {
   return del(['*.html','img','css','js','fonts']);
@@ -52,7 +58,9 @@ gulp.task('favicon', function () {
 gulp.task('html', function () {
   return gulp.src('src/html/*.html')
     .pipe(plumber({
-      errorHandler: notify.onError("Error: <%= error.message %>")
+      errorHandler: notify.onError(function (error) {
+        return error_handler(error);
+      })
     }))
     .pipe(fileinclude({
       prefix: '@'
@@ -147,7 +155,9 @@ gulp.task('sass', function() {
   ]
   return gulp.src('./src/sass/**/*.{sass, scss}')
     .pipe(plumber({
-      errorHandler: notify.onError("Error: <%= error.message %>")
+      errorHandler: notify.onError(function (error) {
+        return error_handler(error);
+      })
     }))
     .pipe(sourcemaps.init())
     .pipe(sass({
