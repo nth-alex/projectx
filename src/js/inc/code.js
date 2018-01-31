@@ -1,3 +1,1 @@
-module.exports = function (a,b) {
-  return 'result is: ' + (a+b);
-}
+console.log('this is code.js');

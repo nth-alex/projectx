@@ -1,3 +1,5 @@
+console.log('this is code.js');
+
 (function() {
   function prevArrow(name) {
     if (name) {
@@ -32,3 +34,10 @@
   //   nextArrow: nextArrow()
   // });
 })();
+
+$(document).ready(function() {
+  console.log('this is main.js');
+  svg4everybody();
+});
+
+//# sourceMappingURL=main.js.map
