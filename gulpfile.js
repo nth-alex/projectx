@@ -136,22 +136,22 @@ gulp.task('deps', function() {
 });
 
 // project scripts
-gulp.task('scripts', function () {
-  return gulp.src([
-    'src/js/inc/**/*.js',
-    'src/js/main.js'
-  ])
-  .pipe(plumber({
-    errorHandler: notify.onError(function (error) {
-      return error;
-    })
-  }))
-  .pipe(sourcemaps.init())
-  .pipe(concat('main.js'))
-  // .pipe(uglify())
-  .pipe(sourcemaps.write('./'))
-  .pipe(gulp.dest('./js'))
-  .pipe(browserSync.stream());
+gulp.task('scripts', function() {
+  return (gulp
+      .src(['src/js/inc/**/*.js', 'src/js/main.js'])
+      .pipe(
+        plumber({
+          errorHandler: notify.onError(function(error) {
+            return error;
+          })
+        })
+      )
+      .pipe(sourcemaps.init())
+      .pipe(concat('main.js'))
+      // .pipe(uglify())
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./js'))
+      .pipe(browserSync.stream()) );
 });
 
 gulp.task('img', function() {
@@ -175,6 +175,7 @@ gulp.task('img', function() {
     .pipe(gulp.dest('./img'));
 });
 
+// sass task
 gulp.task('sass', function() {
   var postCssPlugins = [
     autoprefixer(),
