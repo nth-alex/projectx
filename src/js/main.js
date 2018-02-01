@@ -1,4 +1,4 @@
 $(document).ready(function() {
-  console.log('this is main.js');
+  console.log('main.js');
   svg4everybody();
 });
