@@ -30,7 +30,10 @@
   +media($min-query, $max-query - 1)
     @content
 
-=arrow($dir, $w, $size, $color)
+/*--------------------------------------------------------------
+ # ARROW CORNER
+ --------------------------------------------------------------*/
+=corner($dir, $w, $size, $color)
   border-width: 0
   border-style: solid
   border-color: $color
@@ -54,6 +57,10 @@
     border-left-width: $w+0px
     transform: rotate(45deg)
 
+=arrow_line($width, $height, $bg)
+  width: $width
+  height: $height
+  background: $bg
 
 /*--------------------------------------------------------------
  # SPACER
@@ -78,7 +85,7 @@
   margin-right: auto
   padding-left: 15px
   padding-right: 15px
-  
+
 /*--------------------------------------------------------------
  # PX TO EM
  --------------------------------------------------------------*/

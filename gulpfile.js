@@ -27,7 +27,13 @@ var bower = './bower_components/';
 
 var plugins = [
   npm + 'jquery/dist/jquery.js',
-  npm + 'svg4everybody/dist/svg4everybody.js'
+  npm + 'svg4everybody/dist/svg4everybody.js',
+  npm + 'js-cookie/src/js.cookie.js',
+  npm + 'gsap/TweenMax.js',
+  npm + 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
+  npm + 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js',
+  npm + 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
+  npm + 'jquery-parallax.js/parallax.js'
   // npm+'magnific-popup/dist/jquery.magnific-popup.js',
   // npm+'slick-carousel/slick/slick.js'
 ];
@@ -166,7 +172,7 @@ gulp.task('img', function() {
     .pipe(
       imagemin(
         [
-          imagemin.mozjpeg({ quality: 50 }),
+          imagemin.mozjpeg({ quality: 70 }),
           imagemin.optipng({ optimizationLevel: 2 })
         ],
         { verbose: true }
