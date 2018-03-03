@@ -181,6 +181,10 @@ gulp.task('img', function() {
     .pipe(gulp.dest('./img'));
 });
 
+gulp.task('video', function() {
+  return gulp.src('src/img/**/*.mp4').pipe(gulp.dest('./img'));
+});
+
 // sass task
 gulp.task('sass', function() {
   var postCssPlugins = [
@@ -238,6 +242,7 @@ gulp.task('build', [
   'html',
   'fonts',
   'img',
+  'video',
   'svg',
   'favicon',
   'deps',
