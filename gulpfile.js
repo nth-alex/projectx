@@ -144,20 +144,20 @@ gulp.task('deps', function() {
 // project scripts
 gulp.task('scripts', function() {
   return (gulp
-      .src(['src/js/inc/**/*.js', 'src/js/main.js'])
-      .pipe(
-        plumber({
-          errorHandler: notify.onError(function(error) {
-            return error;
-          })
+    .src(['src/js/inc/**/*.js', 'src/js/main.js'])
+    .pipe(
+      plumber({
+        errorHandler: notify.onError(function(error) {
+          return error;
         })
-      )
-      .pipe(sourcemaps.init())
-      .pipe(concat('main.js'))
-      // .pipe(uglify())
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest('./js'))
-      .pipe(browserSync.stream()) );
+      })
+    )
+    .pipe(sourcemaps.init())
+    .pipe(concat('main.js'))
+    // .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./js'))
+    .pipe(browserSync.stream()));
 });
 
 gulp.task('img', function() {
@@ -174,8 +174,7 @@ gulp.task('img', function() {
         [
           imagemin.mozjpeg({ quality: 70 }),
           imagemin.optipng({ optimizationLevel: 2 })
-        ],
-        { verbose: true }
+        ], { verbose: true }
       )
     )
     .pipe(gulp.dest('./img'));
@@ -195,7 +194,7 @@ gulp.task('sass', function() {
     mqpacker()
   ];
   return gulp
-    .src('./src/sass/**/*.{sass, scss}')
+    .src('./src/sass/**/*.{sass,scss}')
     .pipe(
       plumber({
         errorHandler: notify.onError(function(error) {
@@ -232,8 +231,7 @@ gulp.task('dev', ['build'], function() {
       'src/img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)',
       '!src/img/sprite',
       '!src/img/sprite/**'
-    ],
-    ['img']
+    ], ['img']
   );
 });
 
