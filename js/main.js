@@ -25,7 +25,6 @@ function slick_next(name) {
     return '<button type="button" class="slick-next"></button>';
   }
 }
-
 $(document).ready(function() {
   $('body').removeClass('preload');
   svg4everybody();

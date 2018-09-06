@@ -28,12 +28,13 @@ var bower = './bower_components/';
 var plugins = [
   npm + 'jquery/dist/jquery.js',
   npm + 'svg4everybody/dist/svg4everybody.js',
-  npm + 'js-cookie/src/js.cookie.js',
-  npm + 'gsap/TweenMax.js',
-  npm + 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
-  npm + 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js',
-  npm + 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
-  npm + 'jquery-parallax.js/parallax.js'
+  // npm + 'js-cookie/src/js.cookie.js',
+  // npm + 'gsap/TweenMax.js',
+  // npm + 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
+  // npm + 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js',
+  // npm + 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js',
+  // npm + 'jquery-parallax.js/parallax.js',
+  // npm + 'air-datepicker/dist/js/datepicker.js',
   // npm+'magnific-popup/dist/jquery.magnific-popup.js',
   // npm+'slick-carousel/slick/slick.js'
 ];
@@ -57,7 +58,9 @@ gulp.task('favicon', function() {
           android: false,
           appleIcon: false,
           appleStartup: false,
-          coast: { offset: 25 },
+          coast: {
+            offset: 25
+          },
           favicons: true,
           firefox: false,
           windows: false,
@@ -97,31 +100,25 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('./fonts'));
 });
 
-// Basic configuration example
-var config = {
-  mode: {
-    symbol: {
-      sprite: '../img/sprite.svg',
-      render: {
-        scss: {
-          dest: '../src/sass/inc/_sprite.scss'
-        }
-      }
-    }
-  }
-};
-
 gulp.task('svg', function() {
   gulp
     .src('src/img/sprite/**/*.svg')
     .pipe(
       imagemin([
         imagemin.svgo({
-          plugins: [{ removeAttrs: { attrs: 'fill' } }]
+          plugins: [{
+            removeAttrs: {
+              attrs: 'fill'
+            }
+          }]
         })
       ])
     )
-    .pipe(svgSprite(config))
+    .pipe(svgSprite({
+      mode: {
+        symbol: '../img/sprite.svg'
+      }
+    }))
     .pipe(gulp.dest('./'));
 });
 
@@ -172,9 +169,15 @@ gulp.task('img', function() {
     .pipe(
       imagemin(
         [
-          imagemin.mozjpeg({ quality: 70 }),
-          imagemin.optipng({ optimizationLevel: 2 })
-        ], { verbose: true }
+          imagemin.mozjpeg({
+            quality: 70
+          }),
+          imagemin.optipng({
+            optimizationLevel: 2
+          })
+        ], {
+          verbose: true
+        }
       )
     )
     .pipe(gulp.dest('./img'));
@@ -211,7 +214,9 @@ gulp.task('sass', function() {
     .pipe(postcss(postCssPlugins))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./'))
-    .pipe(browserSync.stream({ match: '**/*.css' }));
+    .pipe(browserSync.stream({
+      match: '**/*.css'
+    }));
 });
 
 gulp.task('dev', ['build'], function() {
