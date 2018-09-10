@@ -1,0 +1,19 @@
+$spacer: 30px;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 2),
+  6: ($spacer * 2.5),
+  7: ($spacer * 3),
+  8: ($spacer * 3.5),
+  9: ($spacer * 4),
+  10: ($spacer * 4.5),
+  11: ($spacer * 5)
+);
+
+$p_color: #333;
+$link_color: #000;
+$link_color_hover: red;
