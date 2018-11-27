@@ -75,3 +75,11 @@
 $browser-context: 16
 @function em($pixels, $context: $browser-context)
   @return #{$pixels/$context}em
+
+// hide slides before slick init
+%slick
+
+  &:not(.slick-initialized)
+    .home-slider__item
+      &:not(:first-child)
+        display: none
