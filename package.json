@@ -39,6 +39,7 @@
     "jquery": "^3.2.1",
     "jquery-parallax.js": "^1.5.0",
     "magnific-popup": "^1.1.0",
+    "natives": "^1.1.6",
     "normalize.sass": "^3.0.3-2",
     "pump": "^3.0.0",
     "scrollmagic": "^2.0.5",
