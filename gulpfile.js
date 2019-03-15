@@ -1,31 +1,28 @@
 'use strict';
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var cssnano = require('cssnano');
-var autoprefixer = require('autoprefixer');
-var concat = require('gulp-concat');
-var pump = require('pump');
-var uglify = require('gulp-uglify');
-var mqpacker = require('css-mqpacker');
-var sourcemaps = require('gulp-sourcemaps');
-var imagemin = require('gulp-imagemin');
+let gulp = require('gulp');
+let sass = require('gulp-sass');
+let postcss = require('gulp-postcss');
+let cssnano = require('cssnano');
+let autoprefixer = require('autoprefixer');
+let concat = require('gulp-concat');
+let uglify = require('gulp-uglify');
+let mqpacker = require('css-mqpacker');
+let sourcemaps = require('gulp-sourcemaps');
+let imagemin = require('gulp-imagemin');
 imagemin.mozjpeg = require('imagemin-mozjpeg');
-var browserSync = require('browser-sync').create();
-var plumber = require('gulp-plumber');
-var notify = require('gulp-notify');
-var source = require('vinyl-source-stream');
-var del = require('del');
-var favicons = require('gulp-favicons');
-var newer = require('gulp-newer');
-var svgSprite = require('gulp-svg-sprite');
-var fileinclude = require('gulp-file-include');
-var beep = require('beepbeep');
-var npm = './node_modules/';
-var bower = './bower_components/';
+let browserSync = require('browser-sync').create();
+let plumber = require('gulp-plumber');
+let notify = require('gulp-notify');
+let del = require('del');
+let favicons = require('gulp-favicons');
+let newer = require('gulp-newer');
+let svgSprite = require('gulp-svg-sprite');
+let fileinclude = require('gulp-file-include');
+let beep = require('beepbeep');
+let npm = './node_modules/';
 
-var plugins = [
+let plugins = [
   npm + 'jquery/dist/jquery.js',
   npm + 'svg4everybody/dist/svg4everybody.js',
   // npm + 'js-cookie/src/js.cookie.js',
@@ -191,7 +188,7 @@ gulp.task('video', function() {
 
 // sass task
 gulp.task('sass', function() {
-  var postCssPlugins = [
+  let postCssPlugins = [
     autoprefixer(),
     cssnano({
       zindex: false
@@ -210,7 +207,7 @@ gulp.task('sass', function() {
     .pipe(sourcemaps.init())
     .pipe(
       sass({
-        includePaths: [npm, bower]
+        includePaths: [npm]
       })
     )
     .pipe(postcss(postCssPlugins))
