@@ -1,7 +1,7 @@
 'use strict';
 
 let gulp = require('gulp');
-let sass = require('gulp-sass');
+let sass = require('gulp-dart-sass');
 let postcss = require('gulp-postcss');
 let cssnano = require('cssnano');
 let autoprefixer = require('autoprefixer');
