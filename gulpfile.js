@@ -207,9 +207,6 @@ gulp.task('sass', function () {
         .pipe(postcss([
             autoprefixer(),
             mqpacker(),
-            purgecss({
-                content: ['./*.html']
-            }),
             cssnano({
                 zindex: false
             }),
@@ -224,7 +221,7 @@ gulp.task('sass', function () {
 gulp.task('purgecss', function () {
     return gulp.src('./style.css')
         .pipe(purgecss({
-            content: ['src/html/**/*.html']
+            content: ['./*.html', './js/*.js']
         }))
         .pipe(gulp.dest('./'))
 });
